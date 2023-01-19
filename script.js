@@ -1,4 +1,3 @@
-
 //  var search = document.querySelector(".search");
 //  var searchBar = document.querySelector(".searchBar>input");
 //  var main = document.querySelector(".main-background");
@@ -52,7 +51,7 @@ var aqi = document.querySelector("#aqi");
 var pBar = document.querySelector(".pBar");
 var humidity = document.querySelector("#humidity");
 var pressure = document.querySelector("#pressure");
-var currTime = document.querySelector(".currTime")
+var currTime = document.querySelector(".currTime");
 
 const APIKEY = "f7f89364af3e9f95fc8b630a7ca17af4";
 
@@ -116,21 +115,17 @@ function defaultCity() {
         .moment(response.sys.sunset * 1000)
         .format("hh:mm A");
 
+      btmcity.innerHTML = response.name;
+      btmtemp.innerHTML = Math.floor(response.main.temp) + "°";
+      btmweather.innerHTML = response.weather[0].description;
 
-        btmcity.innerHTML = response.name;
-        btmtemp.innerHTML = Math.floor(response.main.temp) + "°";
-        btmweather.innerHTML = response.weather[0].description;
+      //current Time
+      var data = new Date();
+      currTime.innerHTML = moment(data).format("hh:mm A - dddd");
 
-
-         //current Time
-        var data = new Date();
-        currTime.innerHTML = moment(data).format("hh:mm A - dddd")
-
-       
-     
-        //humidity - pressure
-        humidity.innerHTML = response.main.humidity;
-        pressure.innerHTML = response.main.pressure;
+      //humidity - pressure
+      humidity.innerHTML = response.main.humidity;
+      pressure.innerHTML = response.main.pressure;
 
       // if(response.wind.deg === "0"){
       // 	dir.innerHTML = "N"
@@ -167,14 +162,14 @@ function defaultCity() {
       // 	 }
     });
 
-    //hourly weather --->
+  //hourly weather --->
 
   fetch(
     "https://api.openweathermap.org/data/2.5/forecast?q=Delhi&appid=f7f89364af3e9f95fc8b630a7ca17af4&units=metric"
   )
     .then((response) => response.json())
     .then((response) => {
-      console.log("Hourly")
+      console.log("Hourly");
       console.log(response);
 
       var crr1 = window.moment(response.list[1].dt_txt).format("hh A");
@@ -787,14 +782,13 @@ function getWeatherData(cityName) {
         .moment(response.sys.sunset * 1000)
         .format("hh:mm A");
 
+      btmcity.innerHTML = response.name;
+      btmtemp.innerHTML = Math.floor(response.main.temp) + "°";
+      btmweather.innerHTML = response.weather[0].description;
 
-        btmcity.innerHTML = response.name;
-        btmtemp.innerHTML = Math.floor(response.main.temp) + "°";
-        btmweather.innerHTML = response.weather[0].description;
-
-         //humidity - pressure
-         humidity.innerHTML = response.main.humidity;
-         pressure.innerHTML = response.main.pressure;
+      //humidity - pressure
+      humidity.innerHTML = response.main.humidity;
+      pressure.innerHTML = response.main.pressure;
 
       //    if(response.wind.deg === "0"){
       // 	dir.innerHTML = "N";
@@ -869,7 +863,6 @@ function getWeatherData(cityName) {
       var i5 = document.querySelector("#i5");
 
       var comp = document.querySelector(".direction-deg>h3");
- 
 
       //index-1
 
@@ -1521,9 +1514,7 @@ bengaluruCity();
 guwahatiCity();
 newYorkCity();
 
-
 // adding gsap in it..................
-
 
 // gsap.to(".degree",{
 // top: "80vh",
@@ -1536,61 +1527,56 @@ newYorkCity();
 // scrollTrigger: {
 // trigger: ".topEdge",
 // scroller: "body",
- 
+
 // start: "top: 20%",
 // scrub: 1,
 
 // }
-
-
 
 // })
 // gsap.to("#bgimage",{
 
 //   duration: .5,
 //   opacity: 1,
-   
+
 //   scrollTrigger: {
 //     trigger: ".topEdge",
 //     scroller: "body",
- 
+
 //     start: "top: 20%",
 //     scrub: 1,
-    
-//     }
 
+//     }
 
 // })
 // gsap.to("#houseimg",{
 
 //   duration: .5,
 //   opacity: 0,
-   
+
 //   scrollTrigger: {
 //     trigger: ".topEdge",
 //     scroller: "body",
-   
+
 //     start: "top: 20%",
 //     scrub: 1,
-    
-//     }
 
+//     }
 
 // })
 // gsap.to(".divider",{
 
 //   opacity: 1,
 //   duration: .5,
-   
+
 //   scrollTrigger: {
 //     trigger: ".topEdge",
 //     scroller: "body",
-   
+
 //     start: "top: 20%",
 //     scrub: 1,
-    
-//     }
 
+//     }
 
 // })
 
@@ -1602,16 +1588,15 @@ newYorkCity();
 //   duration: .5,
 //   fontSize: "2vw",
 //   fontWeight: "400",
-   
+
 //   scrollTrigger: {
 //     trigger: ".topEdge",
 //     scroller: "body",
-    
+
 //     start: "top: 20%",
 //     scrub: 1,
-    
-//     }
 
+//     }
 
 // })
 
@@ -1621,130 +1606,102 @@ var btmcity = document.querySelector(".btm-city");
 var btmtemp = document.querySelector(".btm-temp");
 var btmweather = document.querySelector(".btm-weather");
 
+gsap.to("#bgimage", {
+  duration: 0.5,
+  opacity: "100%",
 
+  scrollTrigger: {
+    trigger: ".topEdge",
+    scroller: "body",
 
+    start: "top: 40%",
 
-gsap.to("#bgimage",{
+    scrub: 1,
+  },
+});
 
-     duration: .5,
-     opacity: "100%",
-     
-     scrollTrigger: {
-       trigger: ".topEdge",
-       scroller: "body",
+gsap.to("#houseimg", {
+  duration: 0.5,
+  y: 300,
 
-       start: "top: 40%",
-    
-       scrub: 1,
-      
-     }
-   })
+  scrollTrigger: {
+    trigger: ".topEdge",
+    scroller: "body",
 
-    
-   gsap.to("#houseimg",{
+    start: "top: 40%",
+    scrub: 1,
+  },
+});
 
-       duration: .5,
-       y: 300,
-       
-       scrollTrigger: {
-         trigger: ".topEdge",
-         scroller: "body",
-       
-      start: "top: 40%",
-         scrub: 1,
-        
-         }
-    
-    
-     })
+gsap.to(".bottom-card", {
+  duration: 0.5,
+  color: "rgba(255, 255, 255)",
 
-   gsap.to(".bottom-card",{
+  scrollTrigger: {
+    trigger: ".topEdge",
+    scroller: "body",
 
-       duration: .5,
-       color: "rgba(255, 255, 255)",
-       
-       
-       scrollTrigger: {
-         trigger: ".topEdge",
-         scroller: "body",
-       
-      start: "top: 40%",
-         scrub: 1,
-        
-         }
-    
-    
-     })
+    start: "top: 40%",
+    scrub: 1,
+  },
+});
 
+//see more card --->
 
+var pointer = 0;
 
-     //see more card --->
-
-     var pointer = 0;
-     
- document.querySelector(".txt-2").addEventListener("click", function(){
-     if(pointer === 0){
-      gsap.to(".aq", {
-        marginTop: "0vh",
-        duration: .5,
-        
-      })
-      gsap.to(".see-more",{
-        marginTop: "87%",
-        duration: .5,
-        opacity: 1,
-        display: "flex",
-      })
-      // document.querySelector(".see-more").style.display = "flex";
-      document.querySelector(".txt-2>span").innerHTML = "See less";
-      pointer = 1;
-     }
-     else{
-      gsap.to(".aq", {
-        marginTop: "45vh",
-        opacity: 1,
-       
-      })
-      gsap.to(".see-more",{
-        marginTop: "80%",
-        opacity: 0,
-        duration: .5,
-        display: "none"
-      })
-      document.querySelector(".txt-2>span").innerHTML = "See more";
-      pointer = 0;
-     }
-
- })
- 
+document.querySelector(".txt-2").addEventListener("click", function () {
+  if (pointer === 0) {
+    gsap.to(".aq", {
+      marginTop: "0vh",
+      duration: 0.5,
+    });
+    gsap.to(".see-more", {
+      marginTop: "87%",
+      duration: 0.5,
+      opacity: 1,
+      display: "flex",
+    });
+    // document.querySelector(".see-more").style.display = "flex";
+    document.querySelector(".txt-2>span").innerHTML = "See less";
+    pointer = 1;
+  } else {
+    gsap.to(".aq", {
+      marginTop: "45vh",
+      opacity: 1,
+    });
+    gsap.to(".see-more", {
+      marginTop: "80%",
+      opacity: 0,
+      duration: 0.5,
+      display: "none",
+    });
+    document.querySelector(".txt-2>span").innerHTML = "See more";
+    pointer = 0;
+  }
+});
 
 // javascript media query ----->
 
-const mediaQuery = window.matchMedia('(min-width: 601px)')
+const mediaQuery = window.matchMedia("(min-width: 601px)");
 
-if(mediaQuery.matches){
-console.log("Welcome to js query")
+if (mediaQuery.matches) {
+  console.log("Welcome to js query");
 
-searchBar.addEventListener("click", () => {
-  searchBar.style.height = "5vh";
-});
+  searchBar.addEventListener("click", () => {
+    searchBar.style.height = "5vh";
+  });
 
-sideSlide.addEventListener("click", () => {
-    
-});
+  sideSlide.addEventListener("click", () => {});
 
-submit.addEventListener("click", () => {
-  bg.style.display = "initial";
-  searchBar.style.height = "5vh";
-  var cityName = searchBar.value;
-  sideSlide.style.display = "initial";
-  getWeatherData(cityName);
-  searchBar.value = "";
-})
-
-
-
-}
-else{
-  console.log("not matched")
+  submit.addEventListener("click", () => {
+    bg.style.display = "initial";
+    searchBar.style.height = "5vh";
+    var cityName = searchBar.value;
+    sideSlide.style.display = "initial";
+    getWeatherData(cityName);
+    searchBar.value = "";
+  });
+} else {
+  console.log("not matched");
 }
